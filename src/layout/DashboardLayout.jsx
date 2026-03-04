@@ -74,6 +74,8 @@ export default function DashboardLayout() {
             pt: { xs: 8, sm: 8 } 
           }}
         >
+
+          {/* // New */}
           <Outlet />
         </Box>
       </Box>
