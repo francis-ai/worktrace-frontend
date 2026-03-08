@@ -4,6 +4,7 @@ import { Container, Grid, Typography } from "@mui/material";
 import ProjectSummaryCard from "../components/ProjectSummaryCard";
 import axios from "axios";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export default function Dashboard() {
   const { user } = useContext(AuthContext);
@@ -17,7 +18,7 @@ export default function Dashboard() {
     const fetchSummary = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/project-summary", {
+        const res = await axios.get(`${BASE_URL}/api/project-summary`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setCounts(res.data);
