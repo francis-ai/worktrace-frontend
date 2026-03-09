@@ -8,7 +8,7 @@ import { Add, Edit, Delete } from "@mui/icons-material";
 import axios from "axios";
 
 const statusOptions = ["active", "paused", "completed"];
-
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const MyProjects = () => {
   const [projects, setProjects] = useState([]);
   const [openModal, setOpenModal] = useState(false);
@@ -28,7 +28,7 @@ const MyProjects = () => {
 
   const fetchProjects = useCallback(async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/projects", {
+      const res = await axios.get(`${BASE_URL}api/projects`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProjects(res.data);
@@ -39,7 +39,7 @@ const MyProjects = () => {
 
   const fetchLogs = async (projectId) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/projects/${projectId}/logs`, {
+      const res = await axios.get(`${BASE_URL}/api/projects/${projectId}/logs`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setLogs(res.data);
@@ -50,7 +50,7 @@ const MyProjects = () => {
 
   const fetchTasks = async (projectId) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/projects/${projectId}/tasks`, {
+      const res = await axios.get(`${BASE_URL}/api/projects/${projectId}/tasks`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTasks(res.data);
@@ -61,7 +61,7 @@ const MyProjects = () => {
 
   const fetchTasksForProject = useCallback(async (projectId) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/projects/${projectId}/tasks`, {
+      const res = await axios.get(`${BASE_URL}/api/projects/${projectId}/tasks`, {
         headers: { Authorization: `Bearer ${token}` },
     });
       setTasksByProject(prev => ({ ...prev, [projectId]: res.data }));
@@ -122,7 +122,7 @@ const MyProjects = () => {
 
   const handleSubmit = async () => {
     const url = isEdit
-      ? `http://localhost:5000/api/projects/${selectedProject.id}`
+      ? `${BASE_URL}/api/projects/${selectedProject.id}`
       : "http://localhost:5000/api/projects";
     const method = isEdit ? "put" : "post";
 
@@ -145,7 +145,7 @@ const MyProjects = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/projects/${id}`, {
+      await axios.delete(`${BASE_URL}/api/projects/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSnackbar({ open: true, message: "Project deleted", severity: "info" });
@@ -161,7 +161,7 @@ const MyProjects = () => {
       console.error("Missing task or project ID");
       return;
     }
-    try { await axios.post(`http://localhost:5000/api/projects/${selectedProject.id}/tasks`, {
+    try { await axios.post(`${BASE_URL}/api/projects/${selectedProject.id}/tasks`, {
         tasks: [ { title: newTask } ]
       },
       {
@@ -182,7 +182,7 @@ const MyProjects = () => {
     try {
         // Call backend API to update task status
         await axios.put(
-        `http://localhost:5000/api/tasks/${taskId}/status`,
+        `${BASE_URL}/api/tasks/${taskId}/status`,
         { status: newStatus },
         {
             headers: { Authorization: `Bearer ${token}` },
@@ -204,7 +204,7 @@ const MyProjects = () => {
 
   const handleDeleteTask = async (taskId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${taskId}/status`, {
+      await axios.delete(`${BASE_URL}/api/tasks/${taskId}/status`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchTasks(selectedProject.id);
@@ -216,7 +216,7 @@ const MyProjects = () => {
 
   const handleAddLog = async () => {
     try {
-      await axios.post(`http://localhost:5000/api/projects/${selectedProject.id}/logs`, {
+      await axios.post(`${BASE_URL}/api/projects/${selectedProject.id}/logs`, {
         note: newLogNote
       }, {
         headers: { Authorization: `Bearer ${token}` }
