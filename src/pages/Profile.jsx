@@ -21,7 +21,7 @@ export default function Profile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/auth/profile', {
+        const res = await axios.get(`${BASE_URL}/api/auth/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setName(res.data.user.name);   // ✅ Correct structure from backend
@@ -42,7 +42,7 @@ export default function Profile() {
 
     try {
       await axios.put(
-        'http://localhost:5000/api/auth/profile',
+        `${BASE_URL}/api/auth/profile`,
         { name: name.trim() },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -69,7 +69,7 @@ export default function Profile() {
 
     try {
       await axios.put(
-        'http://localhost:5000/api/auth/profile/change-password',
+        `${BASE_URL}/api/auth/profile/change-password`,
         { currentPassword: currentPwd, newPassword: newPwd },
         { headers: { Authorization: `Bearer ${token}` } }
       );
