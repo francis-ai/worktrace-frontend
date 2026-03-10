@@ -107,7 +107,7 @@ export default function Profile() {
         margin="normal"
         disabled
       />
-       {/* Change Password */}
+
       <Button variant="outlined" sx={{ mt: 2 }} onClick={handleOpenPwdModal}>
         Change Password
       </Button>
