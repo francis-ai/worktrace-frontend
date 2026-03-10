@@ -93,6 +93,7 @@ export default function Profile() {
     <Box sx={{ maxWidth: 400, mx: 'auto', mt: 6, p: 3, boxShadow: 3, borderRadius: 2 }}>
       <Typography variant="h5" mb={3}>My Profile</Typography>
 
+      {/* Name field */}
       <TextField
         label="Name"
         value={name}
@@ -100,6 +101,7 @@ export default function Profile() {
         fullWidth
         margin="normal"
       />
+      {/* Email Field */}
       <TextField
         label="Email"
         value={email}
@@ -107,7 +109,7 @@ export default function Profile() {
         margin="normal"
         disabled
       />
-
+       {/* Change Password */}
       <Button variant="outlined" sx={{ mt: 2 }} onClick={handleOpenPwdModal}>
         Change Password
       </Button>
