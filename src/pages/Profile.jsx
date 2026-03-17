@@ -24,7 +24,7 @@ export default function Profile() {
         const res = await axios.get(`${BASE_URL}/api/auth/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        setName(res.data.user.name);   // ✅ Correct structure from backend
+        setName(res.data.user.name);  
         setEmail(res.data.user.email);
       } catch (error) {
         console.error('Error fetching profile:', error);

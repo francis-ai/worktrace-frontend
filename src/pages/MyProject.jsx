@@ -180,7 +180,6 @@ const MyProjects = () => {
     console.log(`Toggling task ${taskId} from ${isCompleted ? "completed" : "todo"} to ${newStatus}`);
 
     try {
-        // Call backend API to update task status
         await axios.put(
         `${BASE_URL}/api/tasks/${taskId}/status`,
         { status: newStatus },
