@@ -123,7 +123,7 @@ const MyProjects = () => {
   const handleSubmit = async () => {
     const url = isEdit
       ? `${BASE_URL}/api/projects/${selectedProject.id}`
-      : "http://localhost:5000/api/projects";
+      : `${BASE_URL}/api/projects`;
     const method = isEdit ? "put" : "post";
 
     try {
