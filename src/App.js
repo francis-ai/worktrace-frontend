@@ -1,10 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Pages
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import MyProjects from "./pages/MyProject";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Setting";
+
+
 // Protected Routes
 import ProtectedRoute from "./components/ProtectedRoute";
 // Layout
