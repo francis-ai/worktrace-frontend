@@ -4,7 +4,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import MyProjects from "./pages/MyProject";
 import Profile from "./pages/Profile";
-import Settings from "./pages/Settlings";
+import Settings from "./pages/Setting";
 // Protected Routes
 import ProtectedRoute from "./components/ProtectedRoute";
 // Layout
